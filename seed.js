@@ -6,7 +6,7 @@ var phrasesList = [
 	{word: "JSON", definition: "a lightweight data-interchange format"}
 ];
 
-db.Phrases.remove({}, function(err, foods){
+db.Phrases.remove({}, function(err, phrases){
 	db.Phrases.create(phrasesList, function(err, phrases){
 		if(err) {return console.log(err)};
 		console.log("You created ", phrases, "phrases.");
