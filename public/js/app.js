@@ -9,47 +9,47 @@ function pageLoad() {
   // load phrases
   getPhrases();
   // set event listeners
-  $("#new-food-form").on("submit", function(e){
+  $("#new-phrases-form").on("submit", function(e){
     // prevent form submission
     e.preventDefault();
-    // post to food#create
-    $.post("/foods", $(this).serialize())
+    // post to phrases#create
+    $.post("/phrases", $(this).serialize())
       .done(function(res){
-        // append new food to the page
-        getFoods();
-        $("#new-food-form")[0].reset();
+        // append new phrases to the page
+        getPhrases();
+        $("#new-phrases-form")[0].reset();
       });
   });
 }
 
-function getFoods() {
-  $.get("/foods", function(res){
-    var foods = res.reverse();
-    // grab foods template
-    renderFoods(foods)
+function getPhrases() {
+  $.get("/phrases", function(res){
+    var phrases = res.reverse();
+    // grab phrases template
+    renderPhrases(phrases)
   });
 }
 
-function renderFoods(foods) {
-  template = _.template($("#foods-template").html());
-  // input foods into template and append to parent
-  foodItems = foods.map(function(food) {
-    return template(food);
+function renderPhrases(phrases) {
+  template = _.template($("#phrases-template").html());
+  // input phrases into template and append to parent
+  phraseItems = phrases.map(function(phrase) {
+    return template(phrase);
   });
   // clear content (for repeated use)
-  $("#food-ul").html("");
-  // append foods to ul
-  $("#food-ul").append(foodItems);
+  $("#phrases-ul").html("");
+  // append phrases to ul
+  $("#phrases-ul").append(phraseItems);
 }
 
-function deleteFood(context) {
-  var foodId = $(context).data()._id;
+function deletePhrases(context) {
+  var phraseId = $(context).data()._id;
   $.ajax({
-    url: '/foods/' + foodId,
+    url: '/phrases/' + phraseId,
     type: 'DELETE',
     success: function(res) {
-      // once successfull, re-render all foods
-      getFoods();
+      // once successfull, re-render all phrases
+      getPhrases();
     }
   });
 }
