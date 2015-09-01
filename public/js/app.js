@@ -42,7 +42,7 @@ function renderPhrases(phrases) {
   $("#phrases-ul").append(phraseItems);
 }
 
-function deletePhrases(context) {
+function deletePhrase(context) {
   var phraseId = $(context).data()._id;
   $.ajax({
     url: '/phrases/' + phraseId,
