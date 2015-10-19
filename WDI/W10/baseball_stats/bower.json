@@ -1,0 +1,16 @@
+{
+  "name": "baseball_stats",
+  "version": "0.0.0",
+  "homepage": "https://github.com/Kneelhere/Catchphrase_Project",
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
